@@ -1,0 +1,50 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "Battleship game in JavaScript",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --verbose ./tests",
+    "build": "webpack -p",
+    "dev": "webpack --mode development",
+    "watch": "webpack --progress --watch --mode development",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcrd25/battleship.git"
+  },
+  "keywords": [
+    "ES6",
+    "JavaScript",
+    "Battlship",
+    "Game",
+    "jest",
+    "javaScript-game"
+  ],
+  "author": "mcrd25",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcrd25/battleship/issues"
+  },
+  "homepage": "https://github.com/mcrd25/battleship#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "jest": "^24.9.0",
+    "node-sass": "^4.13.0",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.1",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "materialize-css": "^1.0.0"
+  }
+}
