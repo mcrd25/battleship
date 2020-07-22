@@ -8,7 +8,7 @@ const Ship = (length = 2) => {
     return false;
   };
 
-  const isHit = (value) => value === true;
+  const isHit = value => value === true;
   const isSunk = () => ship.every(isHit);
 
   return {
