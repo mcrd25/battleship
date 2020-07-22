@@ -1,0 +1,1 @@
+import Gameboard from '../src/components/GameBoard';
