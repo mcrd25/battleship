@@ -74,11 +74,11 @@ const Gameboard = () => {
   };
   const placeShipHelper = (x, y, ship, direction) => {
     if (direction === 'horizontal') {
-      for (let i = y; i < ship.length; i += 1) {
+      for (let i = y; i < ship.ship.length; i += 1) {
         board[x][i] = ship;
       }
     } else {
-      for (let i = x; i < ship.length; i += 1) {
+      for (let i = x; i < ship.ship.length; i += 1) {
         board[i][y] = ship;
       }
     }
@@ -86,7 +86,7 @@ const Gameboard = () => {
   const placeShip = (ship, pos, direction = 'horizontal') => {
     const [x, y] = pos;
     if (spaceAvailable(direction, x, y, ship)) {
-      placeShipHelper(x, y, ship, direction);
+      placeShipHelper(x, y, { ship, pos }, direction);
       return true;
     }
     return false;
@@ -100,6 +100,12 @@ const Gameboard = () => {
     }
   };
 
+  const receiveAttack = (pos) => {
+    const [x, y] = pos;
+    if (board[x][y] !== null) {
+      // star
+    }
+  }
   const getBoard = () => board;
 
   return {
