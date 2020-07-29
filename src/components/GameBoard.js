@@ -55,6 +55,7 @@ const Gameboard = () => {
     },
 
   ];
+
   const spaceAvailable = (direction, x, y, ship) => {
     if (direction === 'horizontal') {
       for (let i = y; i < ship.length; i += 1) {
@@ -91,11 +92,20 @@ const Gameboard = () => {
     return false;
   };
 
+  const setDefaultBoard = () => {
+    let ship;
+    for (let i = 0; i < defaultPlacements.length; i += 1) {
+      ship = defaultPlacements[i];
+      placeShip(ship.ship, ship.pos, ship.direction);
+    }
+  };
+
   const getBoard = () => board;
 
   return {
     placeShip,
     getBoard,
+    setDefaultBoard,
   };
 };
 
