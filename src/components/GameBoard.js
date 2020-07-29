@@ -2,12 +2,58 @@ import Ship from './Ship';
 
 const Gameboard = () => {
   const board = Array(10).fill(null).map(() => Array(10).fill(null));
-  const ships = [
+  const defaultPlacements = [
     {
-      ship: new Ship(2),
+      ship: new Ship(1),
       pos: [0, 0],
       direction: 'horizontal',
     },
+    {
+      ship: new Ship(1),
+      pos: [1, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(1),
+      pos: [2, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(1),
+      pos: [3, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(2),
+      pos: [4, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(2),
+      pos: [5, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(2),
+      pos: [6, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(3),
+      pos: [7, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(3),
+      pos: [8, 0],
+      direction: 'horizontal',
+    },
+    {
+      ship: new Ship(4),
+      pos: [9, 0],
+      direction: 'horizontal',
+    },
+
   ];
   const spaceAvailable = (direction, x, y, ship) => {
     if (direction === 'horizontal') {
@@ -36,7 +82,7 @@ const Gameboard = () => {
       }
     }
   };
-  const placeShip = (pos, ship, direction = 'horizontal') => {
+  const placeShip = (ship, pos, direction = 'horizontal') => {
     const [x, y] = pos;
     if (spaceAvailable(direction, x, y, ship)) {
       placeShipHelper(x, y, ship, direction);
