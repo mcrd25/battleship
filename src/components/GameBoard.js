@@ -108,7 +108,7 @@ const Gameboard = (shipCount = 10) => {
     }
   };
 
-  const allSunk = () => sunkCount;
+  const allSunk = () => sunkCount === shipCount;
 
   const receiveAttack = (pos) => {
     const [x, y] = pos;
