@@ -64,7 +64,8 @@ describe('allSunk', () => {
     gameboard3.placeShip(ship1, [0, 0]);
     gameboard3.receiveAttack([0, 0]);
     gameboard3.receiveAttack([3, 3]);
-    gameboard3.receiveAttack([3, 4]);
+    gameboard3.receiveAttack([4, 3]);
+    console.log(gameboard3.getBoard());
     expect(gameboard3.allSunk()).toBe(true);
   });
 });

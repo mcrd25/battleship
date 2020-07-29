@@ -108,7 +108,7 @@ const Gameboard = (shipCount = 10) => {
     }
   };
 
-  const allSunk = () => sunkCount === shipCount;
+  const allSunk = () => sunkCount;
 
   const receiveAttack = (pos) => {
     const [x, y] = pos;
@@ -116,9 +116,9 @@ const Gameboard = (shipCount = 10) => {
       const ship = board[x][y];
       const [startx, starty] = ship.pos;
       if (isHorizontal(ship.direction)) {
-        ship.ship.hit(x - startx);
-      } else {
         ship.ship.hit(y - starty);
+      } else {
+        ship.ship.hit(x - startx);
       }
       if (ship.ship.isSunk()) {
         sunkCount += 1;
