@@ -86,7 +86,7 @@ const Gameboard = () => {
   const placeShip = (ship, pos, direction = 'horizontal') => {
     const [x, y] = pos;
     if (spaceAvailable(direction, x, y, ship)) {
-      placeShipHelper(x, y, { ship, pos }, direction);
+      placeShipHelper(x, y, { ship, pos, direction }, direction);
       return true;
     }
     return false;
