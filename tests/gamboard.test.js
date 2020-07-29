@@ -3,9 +3,13 @@ import Ship from '../src/components/Ship';
 
 const gameboard = new Gameboard();
 const gameboard2 = new Gameboard();
-const isNull = value => value === null;
+const gameboard3 = new Gameboard(2);
+const ship1 = new Ship(1);
 const ship2 = new Ship(2);
-const ship3 = new Ship(3)
+const ship3 = new Ship(3);
+
+const isNull = value => value === null;
+
 describe('getBoard', () => {
   test('returns an array', () => {
     expect(Array.isArray(gameboard.getBoard())).toBe(true);
@@ -43,5 +47,24 @@ describe('setDefaultBoard', () => {
     }
   });
 });
-// describe('receiveAttack', () => {
-// });
+describe('receiveAttack', () => {
+  test('returns true if hits a ship', () => {
+    expect(gameboard2.receiveAttack([0, 0])).toBe(true);
+  });
+  test('returns false if misses a ship', () => {
+    expect(gameboard2.receiveAttack([0, 4])).toBe(false);
+  });
+});
+describe('allSunk', () => {
+  test('returns false if all ships are not sunk', () => {
+    expect(gameboard2.allSunk()).toBe(false);
+  });
+  test('returns true if all ships sunk', () => {
+    gameboard3.placeShip(ship2, [3, 3], 'vertical');
+    gameboard3.placeShip(ship1, [0, 0]);
+    gameboard3.receiveAttack([0, 0]);
+    gameboard3.receiveAttack([3, 3]);
+    gameboard3.receiveAttack([3, 4]);
+    expect(gameboard3.allSunk()).toBe(true);
+  });
+});

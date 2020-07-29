@@ -1,7 +1,8 @@
 import Ship from './Ship';
 
-const Gameboard = () => {
+const Gameboard = (shipCount = 10) => {
   const board = Array(10).fill(null).map(() => Array(10).fill(null));
+  let sunkCount = 0;
   const defaultPlacements = [
     {
       ship: new Ship(1),
@@ -56,8 +57,15 @@ const Gameboard = () => {
 
   ];
 
-  const spaceAvailable = (direction, x, y, ship) => {
+  const isHorizontal = (direction) => {
     if (direction === 'horizontal') {
+      return true;
+    }
+    return false;
+  };
+
+  const spaceAvailable = (direction, x, y, ship) => {
+    if (isHorizontal(direction)) {
       for (let i = y; i < ship.length; i += 1) {
         if (board[x][i] !== null) {
           return false;
@@ -73,12 +81,12 @@ const Gameboard = () => {
     return true;
   };
   const placeShipHelper = (x, y, ship, direction) => {
-    if (direction === 'horizontal') {
-      for (let i = y; i < ship.ship.length; i += 1) {
+    if (isHorizontal(direction)) {
+      for (let i = y; i < ship.ship.length + y; i += 1) {
         board[x][i] = ship;
       }
     } else {
-      for (let i = x; i < ship.ship.length; i += 1) {
+      for (let i = x; i < ship.ship.length + x; i += 1) {
         board[i][y] = ship;
       }
     }
@@ -100,18 +108,33 @@ const Gameboard = () => {
     }
   };
 
+  const allSunk = () => sunkCount === shipCount;
+
   const receiveAttack = (pos) => {
     const [x, y] = pos;
     if (board[x][y] !== null) {
-      // star
+      const ship = board[x][y];
+      const [startx, starty] = ship.pos;
+      if (isHorizontal(ship.direction)) {
+        ship.ship.hit(x - startx);
+      } else {
+        ship.ship.hit(y - starty);
+      }
+      if (ship.ship.isSunk()) {
+        sunkCount += 1;
+      }
+      return true;
     }
-  }
+    return false;
+  };
   const getBoard = () => board;
 
   return {
     placeShip,
     getBoard,
     setDefaultBoard,
+    receiveAttack,
+    allSunk,
   };
 };
 
