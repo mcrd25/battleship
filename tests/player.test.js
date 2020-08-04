@@ -31,3 +31,12 @@ describe('getBoard', () => {
     expect(player1.getBoard().getBoard()[0][0].ship).toBe(ship);
   });
 });
+
+describe('makeRandomMove', () => {
+  test('computerPlayer to have access to method', () => {
+    expect(computerPlayer.makeRandomMove()).not.toBe(undefined);
+  });
+  test('returns array with valid x and y values', () => {
+    expect(Array.isArray(computerPlayer.makeRandomMove())).toBe(true);
+  });
+});
