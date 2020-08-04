@@ -1,9 +1,9 @@
 import Gameboard from './GameBoard';
 const Player = (
   name = 'Player',
-  board = new Gameboard(),
   computer = false,
 ) => {
+  const board = new Gameboard();
   const moves = [];
 
   const getName = () => name;
