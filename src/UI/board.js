@@ -19,7 +19,11 @@ const BoardUI = (gridSize = 10) => {
     grid.className = className;
     for (let x = 0; x < gridSize; x += 1) {
       for (let y = 0; y < gridSize; y += 1) {
-        grid.appendChild(createCell('cell', `${x}-${y}`));
+        const cell = createCell('cell', `${x}-${y}`);
+        cell.addEventListener('click', () => {
+          cell.className += ' blue';
+        });
+        grid.appendChild(cell);
       }
     }
     return grid;

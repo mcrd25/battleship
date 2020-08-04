@@ -11,8 +11,9 @@ const boardDOM = new BoardUI();
 const init = () => {
   const content = document.querySelector('#content');
   const boardsDiv = boardDOM.createGameboardDiv('boards', 'boards-div');
-  const grid = boardDOM.drawGrid('player');
-  boardsDiv.appendChild(grid);
+  const grid = boardDOM.drawGrid('player', 'grid');
+  const grid2 = boardDOM.drawGrid('computer', 'grid');
+  boardsDiv.append(grid, grid2);
   content.appendChild(boardsDiv);
 };
 init();
