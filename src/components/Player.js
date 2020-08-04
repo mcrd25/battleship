@@ -1,4 +1,5 @@
 import Gameboard from './GameBoard';
+
 const Player = (
   name = 'Player',
   computer = false,
