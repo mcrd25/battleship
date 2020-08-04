@@ -1,2 +1,3 @@
-// import Gameboard from './components/GameBoard';
-// import Player from './components/Player';
+import Gameboard from './components/GameBoard';
+import Player from './components/Player';
+import Ship from './components/Ship';
