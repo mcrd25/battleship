@@ -1,4 +1,4 @@
-const boardUI = (board) => {
+const boardUI = () => {
 
 };
 export default boardUI;
