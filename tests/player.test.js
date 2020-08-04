@@ -5,6 +5,7 @@ const playerName = 'Player1';
 const player1 = new Player(playerName);
 const defaultPlayer = new Player();
 const computerPlayer = new Player('computer', true);
+const defaultBoard = new Gameboard();
 
 describe('getName', () => {
   test('returns name of player passed as first property on initialisation', () => {
@@ -15,5 +16,15 @@ describe('getName', () => {
   });
   test('return default name when no property passed', () => {
     expect(defaultPlayer.getName()).toBe('Player');
+  });
+});
+
+describe('getBoard', () => {
+  test('getBoard returns a default board upon intialisation', () => {
+    expect(player1.getBoard().getBoard()).toEqual(defaultBoard.getBoard());
+  });
+  test('any changes made in to board outside is reflected in board in Player component', () => {
+    const tempBoard = player1.getBoard();
+
   });
 });
