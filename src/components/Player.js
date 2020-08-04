@@ -1,5 +1,9 @@
-const Player = (name, board, computer = false) => {
-
+import Gameboard from './GameBoard';
+const Player = (
+  name = 'Player',
+  board = new Gameboard(),
+  computer = false,
+) => {
   const moves = [];
 
   const getName = () => name;
