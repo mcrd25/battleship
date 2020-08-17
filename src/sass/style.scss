@@ -27,3 +27,8 @@
 .hit {
   color: red;
 }
+
+.disabledDiv {
+  pointer-events: none;
+  opacity: 0.4;
+}

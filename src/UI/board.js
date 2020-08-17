@@ -12,31 +12,47 @@ const BoardUI = (gridSize = 10) => {
     gameboardDiv.id = id;
     return gameboardDiv;
   };
-
-  const drawGrid = (id, className, board, computer = false) => {
+  const computerMove = (computer, player) => {
+    const compMove = computer.makeRandomMove();
+    const [x, y] = compMove;
+    console.log(compMove);
+    const cell = document.getElementById(`${x}-${y}-p`);
+    if (player.getBoard().receiveAttack(compMove)) {
+      console.log('hit');
+      cell.className += ' red';
+      if (player.getBoard().allSunk()) {
+        const display = document.querySelector('#display');
+        display.innerHTML = 'Computer Won!';
+      }
+    } else {
+      console.log('sea');
+      cell.className += ' blue';
+    }
+  };
+  const drawGrid = (id, className, player, opponent, computer = false) => {
     const grid = document.createElement('div');
     grid.id = id;
     grid.className = className;
 
     for (let x = 0; x < gridSize; x += 1) {
       for (let y = 0; y < gridSize; y += 1) {
-        const cell = createCell('cell', `${x}-${y}`);
+        const cell = computer ? createCell('cell', `${x}-${y}`) : createCell('cell', `${x}-${y}-p`);
         if (computer) {
           cell.addEventListener('click', () => {
-
             const [x2, y2] = cell.id.split('-');
-            console.log(x2);
-            console.log(y2);
-            if (board.receiveAttack([x2, y2])) {
-              console.log('hit');
-              cell.className += ' red';
-              if (board.allSunk()) {
-                const display = document.querySelector('#display');
-                display.innerHTML = 'You Won!';
+            if (!player.getBoard().getMoves().includes([x2, y2])) {
+              if (player.getBoard().receiveAttack([x2, y2])) {
+                cell.className += ' red';
+                if (player.getBoard().allSunk()) {
+                  const display = document.querySelector('#display');
+                  display.innerHTML = 'You Won!';
+                } else {
+                  computerMove(player, opponent);
+                }
+              } else {
+                cell.className += ' blue';
+                computerMove(player, opponent);
               }
-            } else {
-              console.log('seA');
-              cell.className += ' blue';
             }
           });
         }

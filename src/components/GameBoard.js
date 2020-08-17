@@ -3,6 +3,7 @@ import Ship from './Ship';
 const Gameboard = (shipCount = 10) => {
   const board = Array(10).fill(null).map(() => Array(10).fill(null));
   let sunkCount = 0;
+  const moves = [];
   const defaultPlacements = [
     {
       ship: new Ship(1),
@@ -125,9 +126,11 @@ const Gameboard = (shipCount = 10) => {
       }
       return true;
     }
+    moves.push(pos);
     return false;
   };
   const getBoard = () => board;
+  const getMoves = () => moves;
 
   return {
     placeShip,
@@ -135,6 +138,7 @@ const Gameboard = (shipCount = 10) => {
     setDefaultBoard,
     receiveAttack,
     allSunk,
+    getMoves,
   };
 };
 
