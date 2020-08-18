@@ -20,6 +20,15 @@
   cursor: pointer;
 }
 
+.single-cell {
+  border: 2px solid black;
+  margin: 1px;
+  display: inline-block;
+  background-color: black;
+  height: 50px;
+  width: 50px;
+}
+
 .ship {
   background-color: black;
 }
