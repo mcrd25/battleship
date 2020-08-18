@@ -19,14 +19,14 @@ const BoardUI = (gridSize = 10) => {
     const cell = document.getElementById(`${x}-${y}-p`);
     if (player.getBoard().receiveAttack(compMove)) {
       console.log('hit');
-      cell.className += ' red';
+      cell.className += ' hit';
       if (player.getBoard().allSunk()) {
         const display = document.querySelector('#display');
         display.innerHTML = 'Computer Won!';
       }
     } else {
       console.log('sea');
-      cell.className += ' blue';
+      cell.className += ' sea';
     }
   };
   const drawGrid = (id, className, player, opponent, computer = false) => {
@@ -42,7 +42,7 @@ const BoardUI = (gridSize = 10) => {
             const [x2, y2] = cell.id.split('-');
             if (!player.getBoard().getMoves().includes([x2, y2])) {
               if (player.getBoard().receiveAttack([x2, y2])) {
-                cell.className += ' red';
+                cell.className += ' hit';
                 if (player.getBoard().allSunk()) {
                   const display = document.querySelector('#display');
                   display.innerHTML = 'You Won!';
@@ -50,7 +50,7 @@ const BoardUI = (gridSize = 10) => {
                   computerMove(player, opponent);
                 }
               } else {
-                cell.className += ' blue';
+                cell.className += ' sea';
                 computerMove(player, opponent);
               }
             }

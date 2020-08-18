@@ -114,9 +114,13 @@ const game = (playerGrid, computerGrid) => {
 const placementDivs = (ships, parent) => {
   for (let i = 0; i < ships.length; i += 1) {
     const placementDiv = document.createElement('div');
-    const [ship1x, labelx, ship1y, labely, shipDiv, placeButton] = placementDOM.drawPlacement(`ship${i + 1}`, ships[i].ship, player1, ships[i].ship.length);
+    const [
+      ship1x, labelx, ship1y, labely, shipDiv, placeButton, hRadio, hLabel, vRadio, vLabel,
+    ] = placementDOM.drawPlacement(`ship${i + 1}`, ships[i].ship, player1, ships[i].ship.length);
     placementDiv.className = 'placement';
-    placementDiv.append(shipDiv, labelx, ship1x, labely, ship1y, placeButton);
+    placementDiv.append(
+      shipDiv, labelx, ship1x, labely, ship1y, hLabel, hRadio, vLabel, vRadio, placeButton,
+    );
     parent.appendChild(placementDiv);
   }
 };

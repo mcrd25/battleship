@@ -96,6 +96,8 @@ const Gameboard = (shipCount = 10) => {
     const [x, y] = pos;
     if (spaceAvailable(direction, x, y, ship)) {
       placeShipHelper(x, y, { ship, pos, direction }, direction);
+      console.log('ship placed');
+      console.log(board);
       return true;
     }
     return false;
