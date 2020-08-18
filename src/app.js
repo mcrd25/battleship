@@ -2,10 +2,12 @@ import Gameboard from './components/GameBoard';
 import Player from './components/Player';
 import Ship from './components/Ship';
 import BoardUI from './UI/board';
+import PlacementUI from './UI/placement';
 import M from 'materialize-css';
 import './sass/style.scss';
 
 const boardDOM = new BoardUI();
+const placementDOM = new PlacementUI();
 const player1 = new Player('Player1');
 const computer = new Player('computer', true);
 computer.getBoard().setDefaultBoard();
@@ -61,10 +63,39 @@ const init = () => {
   const grid2 = boardDOM.drawGrid('computer', 'grid disabledDiv', computer, player1, true);
   const defaultBoard = document.createElement('button');
   const display = document.createElement('div');
+  const placementDiv = document.createElement('div');
+  const placeButton = document.createElement('button');
+  const [ship1x, ship1y] = placementDOM.drawPlacement('ship1');
+
   display.id = 'display';
+  placeButton.id = 'ship1';
+  placeButton.className = 'btn waves-effect waves-light use-default';
+  placeButton.innerHTML = 'place';
+  placeButton.addEventListener('click', () => {
+    const x = parseInt(document.getElementById(`${placeButton.id}-x`).value, 10);
+    const y = parseInt(document.getElementById(`${placeButton.id}-y`).value, 10);
+    const ship = new Ship();
+    const direction = 'vertical';
+    if (player1.getBoard().placeShip(ship, [x, y], direction)) {
+      placeButton.className += 'disabledDiv';
+      if (direction === 'horizontal') {
+        for (let i = 0; i < ship.length; i += 1) {
+          const cell = document.getElementById(`${x}-${y + i}-p`);
+          cell.className += ' ship';
+        }
+      } else {
+        for (let i = 0; i < ship.length; i += 1) {
+          const cell = document.getElementById(`${x + i}-${y}-p`);
+          cell.className += ' ship';
+        }
+      }
+    }
+  });
+  placementDiv.append(ship1x, ship1y, placeButton);
   defaultBoard.className = 'btn waves-effect waves-light use-default';
   defaultBoard.innerHTML = 'Use Default';
   content.appendChild(defaultBoard);
+  content.appendChild(placementDiv);
   boardsDiv.append(grid, display, grid2);
   content.appendChild(boardsDiv);
   defaultBoard.addEventListener('click', () => {
