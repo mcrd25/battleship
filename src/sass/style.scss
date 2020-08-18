@@ -1,10 +1,20 @@
 #content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  
+}
+#instructions {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .boards-div {
   display: flex;
+  justify-content: center;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .grid {
@@ -25,8 +35,12 @@
   margin: 1px;
   display: inline-block;
   background-color: black;
-  height: 50px;
-  width: 50px;
+  height: 25px;
+  width: 25px;
+}
+
+.placement {
+  padding: 10px;
 }
 
 .ship {

@@ -115,6 +115,7 @@ const placementDivs = (ships, parent) => {
   for (let i = 0; i < ships.length; i += 1) {
     const placementDiv = document.createElement('div');
     const [ship1x, labelx, ship1y, labely, shipDiv, placeButton] = placementDOM.drawPlacement(`ship${i + 1}`, ships[i].ship, player1, ships[i].ship.length);
+    placementDiv.className = 'placement';
     placementDiv.append(shipDiv, labelx, ship1x, labely, ship1y, placeButton);
     parent.appendChild(placementDiv);
   }
@@ -128,6 +129,7 @@ const init = () => {
   const defaultBoard = document.createElement('button');
   const display = document.createElement('div');
   const instructionsDiv = document.createElement('div');
+  instructionsDiv.id = 'instructions';
   display.id = 'display';
   defaultBoard.className = 'btn waves-effect waves-light use-default';
   defaultBoard.innerHTML = 'Use Default';
