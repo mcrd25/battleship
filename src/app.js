@@ -1,12 +1,12 @@
-import Gameboard from './components/GameBoard';
+// import M from 'materialize-css';
 import Player from './components/Player';
 import Ship from './components/Ship';
 import BoardUI from './UI/board';
 import PlacementUI from './UI/placement';
-import M from 'materialize-css';
+
 import './sass/style.scss';
 
-M.AutoInit();
+
 
 const boardDOM = new BoardUI();
 const ships = [
@@ -68,6 +68,8 @@ const computer = new Player('computer', true);
 computer.getBoard().setDefaultBoard();
 
 const placementDivs = (ships, parent) => {
+  const row1 = document.createElement('div');
+  const row2 = document.createElement('div');
   for (let i = 0; i < ships.length; i += 1) {
     const placementDiv = document.createElement('div');
     const [
@@ -77,7 +79,12 @@ const placementDivs = (ships, parent) => {
     placementDiv.append(
       shipDiv, labelx, ship1x, labely, ship1y, hLabel, hRadio, vLabel, vRadio, placeButton,
     );
-    parent.appendChild(placementDiv);
+    if (i < parseInt(ships.length / 2, 10)) {
+      row1.appendChild(placementDiv);
+    } else {
+      row2.appendChild(placementDiv);
+    }
+    parent.append(row1, row2);
   }
 };
 

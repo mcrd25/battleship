@@ -34,7 +34,6 @@ const PlacementUI = () => {
       if (player.getBoard().placeShip(ship, [x, y], direction)) {
         placeButton.className += ' disabledDiv place-btn-disabled';
         const allPlaces = document.querySelectorAll('.place-btn-disabled');
-        console.log(allPlaces);
         if (allPlaces.length === 10) {
           const start = document.querySelector('#start');
           const display = document.querySelector('#display');
