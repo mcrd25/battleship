@@ -16,11 +16,9 @@ const Player = (
     let x = Math.floor(Math.random() * 10);
     let y = Math.floor(Math.random() * 10);
     while (arrayInArray(moves, [x, y])) {
-      console.log('repeat');
       x = Math.floor(Math.random() * 10);
       y = Math.floor(Math.random() * 10);
     }
-    console.log(moves);
     moves.push([x, y]);
     return [x, y];
   };
