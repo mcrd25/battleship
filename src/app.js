@@ -92,7 +92,8 @@ const init = () => {
   const startBtn = document.createElement('button');
   instructionsDiv.id = 'instructions';
   display.id = 'display';
-  startBtn.className = 'btn waves-effect waves-light use-default';
+  startBtn.id = 'start';
+  startBtn.className = 'btn waves-effect waves-light use-default disabledDiv';
   startBtn.innerHTML = 'Start';
   startDiv.appendChild(startBtn);
   placementDivs(ships, instructionsDiv);

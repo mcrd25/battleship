@@ -25,14 +25,22 @@ const PlacementUI = () => {
     verticalLabel.htmlFor = verticalRadio.id;
     verticalLabel.innerHTML = 'vertical';
     placeButton.id = shipName;
-    placeButton.className = 'btn waves-effect waves-light use-default';
+    placeButton.className = 'btn waves-effect waves-light use-default place-btn';
     placeButton.innerHTML = 'place';
     placeButton.addEventListener('click', () => {
       const x = parseInt(document.getElementById(`${placeButton.id}-x`).value, 10);
       const y = parseInt(document.getElementById(`${placeButton.id}-y`).value, 10);
       const direction = document.querySelector(`input[name=${shipName}-direction]:checked`).value;
       if (player.getBoard().placeShip(ship, [x, y], direction)) {
-        placeButton.className += ' disabledDiv';
+        placeButton.className += ' disabledDiv place-btn-disabled';
+        const allPlaces = document.querySelectorAll('.place-btn-disabled');
+        console.log(allPlaces);
+        if (allPlaces.length === 10) {
+          const start = document.querySelector('#start');
+          const display = document.querySelector('#display');
+          start.className = 'btn waves-effect waves-light use-default';
+          display.innerHTML = 'Ok, we can start now!';
+        }
         if (direction === 'horizontal') {
           for (let i = 0; i < ship.length; i += 1) {
             const cell = document.getElementById(`${x}-${y + i}-p`);
