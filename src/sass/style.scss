@@ -10,6 +10,10 @@
   padding-bottom: 0;
 }
 
+#display {
+  font-size: 20px;
+}
+
 .boards-div {
   display: flex;
   justify-content: center;
@@ -48,16 +52,20 @@
 }
 
 .sea {
-  color: blue;
+  background-color: lightblue;
 }
 
 .hit {
-  color: red;
+  background-color: red;
 }
 
 .disabledDiv {
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.6;
+}
+
+.disabledCell {
+  pointer-events: none;
 }
 
 .hide-placement {

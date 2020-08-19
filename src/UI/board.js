@@ -15,18 +15,18 @@ const BoardUI = (gridSize = 10) => {
   const computerMove = (computer, player) => {
     const compMove = computer.makeRandomMove();
     const [x, y] = compMove;
-    console.log(compMove);
     const cell = document.getElementById(`${x}-${y}-p`);
+    const display = document.querySelector('#display');
     if (player.getBoard().receiveAttack(compMove)) {
-      console.log('hit');
       cell.className += ' hit';
       if (player.getBoard().allSunk()) {
-        const display = document.querySelector('#display');
         display.innerHTML = 'Computer Won!';
+      } else {
+        display.innerHTML = 'Your turn';
       }
     } else {
-      console.log('sea');
       cell.className += ' sea';
+      display.innerHTML = 'Your turn';
     }
   };
   const drawGrid = (id, className, player, opponent, computer = false) => {
@@ -41,16 +41,20 @@ const BoardUI = (gridSize = 10) => {
           cell.addEventListener('click', () => {
             const [x2, y2] = cell.id.split('-');
             if (!player.getBoard().getMoves().includes([x2, y2])) {
+              const display = document.querySelector('#display');
               if (player.getBoard().receiveAttack([x2, y2])) {
                 cell.className += ' hit';
                 if (player.getBoard().allSunk()) {
-                  const display = document.querySelector('#display');
                   display.innerHTML = 'You Won!';
                 } else {
+                  display.innerHTML = 'Computer\'s turn';
+                  cell.className += ' disabledCell';
                   computerMove(player, opponent);
                 }
               } else {
                 cell.className += ' sea';
+                display.innerHTML = 'Computer\'s turn';
+                cell.className += ' disabledCell';
                 computerMove(player, opponent);
               }
             }
