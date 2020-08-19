@@ -67,13 +67,19 @@ const Gameboard = (shipCount = 10) => {
 
   const spaceAvailable = (direction, x, y, ship) => {
     if (isHorizontal(direction)) {
-      for (let i = y; i < ship.length; i += 1) {
+      if (y + ship.length > 10) {
+        return false;
+      }
+      for (let i = y; i < y + ship.length; i += 1) {
         if (board[x][i] !== null) {
           return false;
         }
       }
     } else {
-      for (let i = x; i < ship.length; i += 1) {
+      if (x + ship.length > 10) {
+        return false;
+      }
+      for (let i = x; i < x + ship.length; i += 1) {
         if (board[i][y] !== null) {
           return false;
         }
@@ -96,8 +102,6 @@ const Gameboard = (shipCount = 10) => {
     const [x, y] = pos;
     if (spaceAvailable(direction, x, y, ship)) {
       placeShipHelper(x, y, { ship, pos, direction }, direction);
-      console.log('ship placed');
-      console.log(board);
       return true;
     }
     return false;

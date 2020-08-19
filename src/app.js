@@ -130,18 +130,19 @@ const init = () => {
   const boardsDiv = boardDOM.createGameboardDiv('boards', 'boards-div');
   const grid = boardDOM.drawGrid('player', 'grid disabledDiv', player1, computer);
   const grid2 = boardDOM.drawGrid('computer', 'grid disabledDiv', computer, player1, true);
-  const defaultBoard = document.createElement('button');
   const display = document.createElement('div');
   const instructionsDiv = document.createElement('div');
+  const startDiv = document.createElement('div');
+  const startBtn = document.createElement('button');
   instructionsDiv.id = 'instructions';
   display.id = 'display';
-  defaultBoard.className = 'btn waves-effect waves-light use-default';
-  defaultBoard.innerHTML = 'Use Default';
+  startBtn.className = 'btn waves-effect waves-light use-default';
+  startBtn.innerHTML = 'Start';
+  startDiv.appendChild(startBtn);
   placementDivs(ships, instructionsDiv);
   boardsDiv.append(grid, display, grid2);
-  content.append(instructionsDiv, boardsDiv);
-  defaultBoard.addEventListener('click', () => {
-    player1.getBoard().setDefaultBoard();
+  content.append(instructionsDiv, startDiv, boardsDiv);
+  startBtn.addEventListener('click', () => {
     grid2.className = 'grid';
   });
 };
