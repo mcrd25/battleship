@@ -6,24 +6,15 @@ const PlacementUI = () => {
     const yLabel = document.createElement('label');
     const shipDiv = document.createElement('div');
     const placeButton = document.createElement('button');
-    const horizontalRadio = document.createElement('input');
     const horizontalLabel = document.createElement('label');
-    const verticalRadio = document.createElement('input');
     const verticalLabel = document.createElement('label');
 
-    horizontalRadio.value = 'horizontal';
-    horizontalRadio.id = `${shipName}-h`;
-    horizontalRadio.type = 'radio';
-    horizontalRadio.name = `${shipName}-direction`;
-    horizontalRadio.checked = true;
-    horizontalLabel.htmlFor = horizontalRadio.id;
-    horizontalLabel.innerHTML = 'horizontal';
-    verticalRadio.value = 'vertical';
-    verticalRadio.id = `${shipName}-v`;
-    verticalRadio.type = 'radio';
-    verticalRadio.name = `${shipName}-direction`;
-    verticalLabel.htmlFor = verticalRadio.id;
-    verticalLabel.innerHTML = 'vertical';
+    horizontalLabel.innerHTML = `
+    <input class="with-gap" id="${shipName}-h" name="${shipName}-direction" type="radio" value="horizontal" checked />
+    <span>Horizontal</span>`;
+    verticalLabel.innerHTML = `
+    <input class="with-gap" id="${shipName}-v" name="${shipName}-direction" type="radio" value="vertical" />
+    <span>Vertical</span>`;
     placeButton.id = shipName;
     placeButton.className = 'btn waves-effect waves-light use-default place-btn';
     placeButton.innerHTML = 'place';
@@ -61,14 +52,16 @@ const PlacementUI = () => {
     }
 
     xInput.id = `${shipName}-x`;
+    xInput.type = 'text';
     xLabel.htmlFor = xInput.id;
     xLabel.innerHTML = 'x';
     yInput.id = `${shipName}-y`;
+    yInput.type = 'text';
     yLabel.htmlFor = yInput.id;
     yLabel.innerHTML = 'y';
     xInput.className = 'placement-input';
     yInput.className = 'placement-input';
-    return [xInput, xLabel, yInput, yLabel, shipDiv, placeButton, horizontalRadio, horizontalLabel, verticalRadio, verticalLabel];
+    return [xInput, xLabel, yInput, yLabel, shipDiv, placeButton, horizontalLabel, verticalLabel];
   };
 
   return {

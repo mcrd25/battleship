@@ -1,4 +1,4 @@
-// import M from 'materialize-css';
+import M from 'materialize-css';
 import Player from './components/Player';
 import Ship from './components/Ship';
 import BoardUI from './UI/board';
@@ -6,7 +6,7 @@ import PlacementUI from './UI/placement';
 
 import './sass/style.scss';
 
-
+M.AutoInit();
 
 const boardDOM = new BoardUI();
 const ships = [
@@ -70,14 +70,16 @@ computer.getBoard().setDefaultBoard();
 const placementDivs = (ships, parent) => {
   const row1 = document.createElement('div');
   const row2 = document.createElement('div');
+  row1.className = 'place-row';
+  row2.className = 'place-row';
   for (let i = 0; i < ships.length; i += 1) {
     const placementDiv = document.createElement('div');
     const [
-      ship1x, labelx, ship1y, labely, shipDiv, placeButton, hRadio, hLabel, vRadio, vLabel,
+      ship1x, labelx, ship1y, labely, shipDiv, placeButton, hLabel, vLabel,
     ] = placementDOM.drawPlacement(`ship${i + 1}`, ships[i].ship, player1, ships[i].ship.length);
     placementDiv.className = 'placement';
     placementDiv.append(
-      shipDiv, labelx, ship1x, labely, ship1y, hLabel, hRadio, vLabel, vRadio, placeButton,
+      shipDiv, labelx, ship1x, labely, ship1y, hLabel, vLabel, placeButton,
     );
     if (i < parseInt(ships.length / 2, 10)) {
       row1.appendChild(placementDiv);
@@ -96,12 +98,20 @@ const init = () => {
   const display = document.createElement('div');
   const instructionsDiv = document.createElement('div');
   const startDiv = document.createElement('div');
+  const instruction = document.createElement('div');
+  const instructionsP = document.createElement('p');
   const startBtn = document.createElement('button');
+
   instructionsDiv.id = 'instructions';
+  instructionsP.className = 'instruction-text center';
+  instructionsP.innerHTML = 'You have to place all ships before starting game. x represents the row and y the column. You must enter numbers between 0 and 9';
+  instruction.appendChild(instructionsP);
+  instructionsDiv.appendChild(instruction);
   display.id = 'display';
   startBtn.id = 'start';
   startBtn.className = 'btn waves-effect waves-light use-default disabledDiv';
   startBtn.innerHTML = 'Start';
+  startDiv.className = 'center';
   startDiv.appendChild(startBtn);
   placementDivs(ships, instructionsDiv);
   boardsDiv.append(grid, display, grid2);

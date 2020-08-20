@@ -5,9 +5,19 @@
 }
 #instructions {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 0;
+  flex-direction: column;
+  margin-bottom: 15px;
   padding-bottom: 0;
+}
+
+.instruction-text {
+  font-size: 1.5rem;
+}
+
+.place-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
 }
 
 #display {
@@ -45,6 +55,10 @@
 
 .placement {
   padding: 10px;
+}
+
+.place-btn {
+  margin-left: 10px;
 }
 
 .ship {
