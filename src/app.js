@@ -119,6 +119,7 @@ const init = () => {
   startBtn.addEventListener('click', () => {
     display.innerHTML = 'Your turn';
     grid2.className = 'grid';
+    startBtn.className += ' disabledDiv';
   });
 };
 init();
