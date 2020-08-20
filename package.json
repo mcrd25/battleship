@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Battleship game in JavaScript",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "test": "jest --verbose ./tests",
     "build": "webpack -p",
@@ -42,7 +41,8 @@
     "sass-loader": "^8.0.1",
     "style-loader": "^1.1.2",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "jest": "^26.1.0",
