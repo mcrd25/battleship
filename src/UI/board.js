@@ -12,6 +12,12 @@ const BoardUI = (gridSize = 10) => {
     gameboardDiv.id = id;
     return gameboardDiv;
   };
+
+  const disableGrid = () => {
+    const grid = document.querySelector('#computer')
+    grid.className ;+= 'disabledDiv';
+  }
+
   const computerMove = (computer, player) => {
     const compMove = computer.makeRandomMove();
     const [x, y] = compMove;
@@ -45,6 +51,7 @@ const BoardUI = (gridSize = 10) => {
               if (player.getBoard().receiveAttack([x2, y2])) {
                 cell.className += ' hit';
                 if (player.getBoard().allSunk()) {
+                  disableGrid();
                   display.innerHTML = 'You Won!';
                 } else {
                   display.innerHTML = 'Computer\'s turn';
