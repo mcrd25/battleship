@@ -14,7 +14,7 @@ const BoardUI = (gridSize = 10) => {
   };
 
   const disableGrid = () => {
-    const grid = document.querySelector('#computer')
+    const grid = document.querySelector('#computer');
     grid.className += ' disabledDiv';
   };
 
