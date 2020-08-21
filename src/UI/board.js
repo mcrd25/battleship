@@ -27,6 +27,7 @@ const BoardUI = (gridSize = 10) => {
       cell.className += ' hit';
       if (player.getBoard().allSunk()) {
         display.innerHTML = 'Computer Won!';
+        disableGrid();
       } else {
         display.innerHTML = 'Your turn';
       }
