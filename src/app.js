@@ -1,12 +1,9 @@
-import M from 'materialize-css';
 import Player from './components/Player';
 import Ship from './components/Ship';
 import BoardUI from './UI/board';
 import PlacementUI from './UI/placement';
 
 import './sass/style.scss';
-
-M.AutoInit();
 
 const boardDOM = new BoardUI();
 const ships = [
