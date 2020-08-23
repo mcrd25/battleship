@@ -1,0 +1,87 @@
+#content {
+  display: flex;
+  flex-direction: column;
+}
+
+#instructions {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding-bottom: 0;
+}
+
+.instruction-text {
+  font-size: 1.7rem;
+}
+
+.place-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+#display {
+  font-size: 20px;
+}
+
+.boards-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
+  margin: 10rem;
+}
+
+.cell {
+  border: 2px solid black;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.single-cell {
+  border: 2px solid black;
+  margin: 1px;
+  display: inline-block;
+  background-color: black;
+  height: 25px;
+  width: 25px;
+}
+
+.placement {
+  padding: 10px;
+}
+
+.place-btn {
+  margin-left: 10px;
+}
+
+.ship {
+  background-color: black;
+}
+
+.sea {
+  background-color: lightblue;
+}
+
+.hit {
+  background-color: red;
+}
+
+.disabledDiv {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.disabledCell {
+  pointer-events: none;
+}
+
+.hide-placement {
+  display: none;
+}
